@@ -42,7 +42,7 @@ Ce projet utilise GIT pour le contrôle de version. Assurez-vous que GIT est ins
 7. Installez les dépendances du code avec :
    ```
    pip install -r requirements.txt
-   pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
    ```
 
 ## Utilisation
