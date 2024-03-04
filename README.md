@@ -1,3 +1,6 @@
+# **Le code a été testé avec Python 3.10**
+
+
 ## Vous utiliserez GIT pour récupérer le code sur votre ordinateur. Assurez-vous que GIT est installé. Veuillez suivre cette documentation :
 ```
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
