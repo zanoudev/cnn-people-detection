@@ -33,6 +33,9 @@ source env/bin/activate
 ```
 pip install -r requirements.txt
 ```
+```
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+```
 
 
 ## Vous êtes maintenant prêt à exécuter le code. Le fichier main.py contient un exemple de code pour obtenir la segmentation d'instances des personnes dans une image. Le code pointe vers les images du dossier "examples". Il traitera les images de "examples/source" et les placera dans "examples/output" pour vos tests. Vous pouvez modifier le code pour traiter à la place les images du dossier "images" pour votre projet.
