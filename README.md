@@ -1,44 +1,50 @@
-# **Le code a été testé avec Python 3.10**
 
+# Instance Segmentation
 
-## Vous utiliserez GIT pour récupérer le code sur votre ordinateur. Assurez-vous que GIT est installé. Veuillez suivre cette documentation :
-```
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-```
+Ce projet a été testé avec Python 3.10.
 
-## La première étape consiste à cloner le dépôt dans un emplacement de votre choix avec cette commande :
-```
-git clone https://gitlab.com/zatoitche/inst_seg.git
-```
+## Pour Commencer
 
+Suivez ces étapes simples pour obtenir une copie locale en fonctionnement.
 
-## Téléchargez images.zip pour la deuxième partie de votre laboratoire à partir du lien suivant :
-```
-https://drive.google.com/file/d/1potC4tmKjvLAlXSmhaGH59u-g5u4qg5-/view?usp=drive_link
-```
+### Prérequis
 
+Ce projet utilise GIT pour le contrôle de version. Assurez-vous que GIT est installé sur votre ordinateur. Pour les instructions d'installation, visitez :
 
-## Extrayez images.zip et placez le dossier "images" extrait dans le répertoire du projet que vous avez cloné précédemment.
+[https://git-scm.com/book/fr/v2/Démarrage-rapide-Installation-de-Git](https://git-scm.com/book/fr/v2/Démarrage-rapide-Installation-de-Git)
 
-## Dans le Terminal ou le CommandLine, naviguez jusqu'au répertoire du projet que vous avez cloné.
+### Installation
 
-## Créez un environnement virtuel appelé "env" avec la commande suivante dans votre Terminal ou invite de commande:
-```
-python3 -m venv env
-```
+1. Dans le Terminal ou le CommandLine,clonez le dépôt
+   ```
+   git clone https://gitlab.com/zatoitche/inst_seg.git
+   ```
 
-## Activez l'environnement virtuel avec cette commande (assurez-vous d'être dans le répertoire du projet):
-```
-source env/bin/activate
-```
+2. Téléchargez le fichier `images.zip` pour la deuxième partie de votre laboratoire depuis le lien suivant :
+   ```
+   https://drive.google.com/file/d/1potC4tmKjvLAlXSmhaGH59u-g5u4qg5-/view?usp=sharing
+   ```
 
-## Installez les dépendances du code avec la commande suivante:
-```
-pip install -r requirements.txt
-```
-```
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-```
+3. Extrayez `images.zip` et placez le dossier "images" extrait dans le répertoire du projet que vous avez précédemment cloné.
 
+4. Dans le Terminal ou le CommandLine, naviguez vers votre répertoire de projet.
 
-## Vous êtes maintenant prêt à exécuter le code. Le fichier main.py contient un exemple de code pour obtenir la segmentation d'instances des personnes dans une image. Le code pointe vers les images du dossier "examples". Il traitera les images de "examples/source" et les placera dans "examples/output" pour vos tests. Vous pouvez modifier le code pour traiter à la place les images du dossier "images" pour votre projet.
+5. Créez un environnement virtuel nommé "env" en utilisant la commande suivante :
+   ```
+   python3 -m venv env
+   ```
+
+6. Activez l'environnement virtuel avec :
+   ```
+   source env/bin/activate
+   ```
+
+7. Installez les dépendances du code avec :
+   ```
+   pip install -r requirements.txt
+   pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+   ```
+
+## Utilisation
+
+Vous êtes maintenant prêt à exécuter le code. Le fichier `main.py` contient un exemple de code pour effectuer la segmentation d'instance sur des personnes dans une image. Le code cible les images dans le dossier "examples", traitant les images de "examples/source" et les plaçant dans "examples/output" pour vos tests. Vous pouvez modifier le code pour traiter les images du dossier "images" pour votre projet.
