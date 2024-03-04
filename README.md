@@ -15,7 +15,7 @@ Ce projet utilise GIT pour le contrôle de version. Assurez-vous que GIT est ins
 
 ### Installation
 
-1. Dans le Terminal ou le CommandLine,clonez le dépôt
+1. Dans le Terminal ou le CommandLine, clonez le dépôt
    ```
    git clone https://gitlab.com/zatoitche/inst_seg.git
    ```
