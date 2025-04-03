@@ -1,50 +1,87 @@
+# Multi-Camera Person Re-Identification
 
-# Instance Segmentation
+A computer vision project using instance segmentation and RGB color histogram analysis to identify individuals across multiple frames of security footage. The system leverages a pretrained convolutional neural network for person detection and applies color-based similarity metrics to track known individuals over time and across different camera angles.
 
-Ce projet a été testé avec Python 3.10.
+## Getting Started
 
-## Pour Commencer
+**Prerequisites:**
 
-Suivez ces étapes simples pour obtenir une copie locale en fonctionnement.
+- Python 3.8 or higher  
+- Virtual environment (recommended)
 
-### Prérequis
+## Setup
 
-Ce projet utilise GIT pour le contrôle de version. Assurez-vous que GIT est installé sur votre ordinateur. Pour les instructions d'installation, visitez :
+**Create and activate a virtual environment:**
 
-[https://git-scm.com/book/fr/v2/Démarrage-rapide-Installation-de-Git](https://git-scm.com/book/fr/v2/Démarrage-rapide-Installation-de-Git)
+<details>
+<summary>On Windows</summary>
 
-### Installation
+```bash
+python -m venv venv
+source venv/Scripts/activate
+```
 
-1. Dans le Terminal ou le CommandLine, clonez le dépôt
-   ```
-   git clone https://gitlab.com/zatoitche/inst_seg.git
-   ```
+</details>
 
-2. Téléchargez le fichier `images.zip` pour la deuxième partie de votre laboratoire depuis le lien suivant :
-   ```
-   https://drive.google.com/file/d/1potC4tmKjvLAlXSmhaGH59u-g5u4qg5-/view?usp=sharing
-   ```
+<details>
+<summary>On Unix-based systems</summary>
 
-3. Extrayez `images.zip` et placez le dossier "images" extrait dans le répertoire du projet que vous avez précédemment cloné.
+```bash
+python -m venv venv
+source venv/bin/activate
+```
 
-4. Dans le Terminal ou le CommandLine, naviguez vers votre répertoire de projet.
+</details>
 
-5. Créez un environnement virtuel nommé "env" en utilisant la commande suivante :
-   ```
-   python3 -m venv env
-   ```
+**Install the required dependencies:**
 
-6. Activez l'environnement virtuel avec :
-   ```
-   source env/bin/activate
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-7. Installez les dépendances du code avec :
-   ```
-   pip install -r requirements.txt
-   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-   ```
+> Ensure that `torch` and `torchvision` are installed according to your system configuration:  
+> https://pytorch.org/get-started/locally/
 
-## Utilisation
+---
 
-Vous êtes maintenant prêt à exécuter le code. Le fichier `main.py` contient un exemple de code pour effectuer la segmentation d'instance sur des personnes dans une image. Le code cible les images dans le dossier "examples", traitant les images de "examples/source" et les plaçant dans "examples/output" pour vos tests. Vous pouvez modifier le code pour traiter les images du dossier "images" pour votre projet.
+## Part 1: Histogram-Based Matching (Baseline Method)
+
+This component implements a basic person matching approach using manually defined bounding boxes and HSV histogram comparison. The method compares individuals between a set of test images and video frames using their color distribution.
+
+### Methodology
+
+- Each individual in the test images is identified via bounding boxes.
+- For each bounding box, both full-body and upper-body regions are extracted.
+- Normalized HSV histograms are computed for these regions.
+- These histograms are compared against every person detected in a sequence of video frames.
+- A similarity score is calculated using histogram intersection.
+- The top 100 matches are retained and exported for evaluation.
+
+### Input Requirements
+
+- A folder containing image frames from a video sequence.
+- A `labels.txt` file with bounding box coordinates for individuals in the video frames.
+- Two test images containing reference individuals.
+
+---
+
+## Part 2: Mask R-CNN and RGB Histogram Matching
+
+This is the primary component of the project. It replaces manual annotations with automated person segmentation and improves matching accuracy through the use of RGB histograms and a CNN-based detector.
+
+### Methodology
+
+- A pretrained Mask R-CNN model is used to detect individuals in each frame.
+- Five reference individuals are provided via a set of static images.
+- For each reference image, RGB histograms are extracted from the full body and upper body.
+- In every frame, detected individuals are segmented, and their RGB histograms are computed in the same way.
+- Histogram intersection is used to compare detected individuals with the references.
+- Matches with scores exceeding a configurable threshold are retained.
+- For each reference individual, the top 100 matches are saved to disk.
+
+---
+
+## Output
+
+- Each individual’s best matches are saved as image files in separate output directories.
+- Results can be verified visually to assess the effectiveness of the matching process.
