@@ -7,11 +7,11 @@ def get_model():
     weights = MaskRCNN_ResNet50_FPN_Weights.DEFAULT
     
     # Obtenir les transformations associées aux poids
-    transformsations = weights.transforms()
+    transformations = weights.transforms()
     
     # Initialiser le modèle avec les poids et le mettre en mode évaluation
     model = maskrcnn_resnet50_fpn(weights=weights, progress=False)
     model = model.eval()
 
     # Retourner le modèle et les transformations
-    return model, transformsations
+    return model, transformations
